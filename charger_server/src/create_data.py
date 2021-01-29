@@ -42,9 +42,10 @@ data_dir = Path(__file__).parent / 'data'
 
 class CreateDataFields:
 
-    def __init__(self,
-                 pd_csvfiles: List[str] = data_dir.glob('pd/*.csv'),
-                 ppv_csvfiles: List[str] = data_dir.glob('ppv/*.csv')):
+    def __init__(
+            self,
+            pd_csvfiles: List[str] = data_dir.glob('pd/*.csv'),
+            ppv_csvfiles: List[str] = data_dir.glob('ppv/*.csv')):
         """
         Parameters
         ----------
