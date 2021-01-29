@@ -1,0 +1,3 @@
+SocketClient:
+  host: 'localhost'
+  port: 11111

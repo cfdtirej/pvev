@@ -1,0 +1,13 @@
+.chart {
+  display: none;
+  width: 700px;
+  height: 700px;
+}
+.chart1 {
+  display: none;
+  width: 50%;
+}
+.chart2 {
+  display: none;
+  width: 50%;
+}

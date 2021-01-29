@@ -1,0 +1,16 @@
+.idea
+.vscode
+*__pycache__
+
+neo4j/
+tmp
+config.yaml
+neo4j_utils/data
+
+/charger_server/src/data/*
+client/data/
+
+
+
+
+
