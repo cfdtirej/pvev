@@ -140,4 +140,4 @@ if __name__ == '__main__':
     with open(Path(__file__).parents[1]/'config'/'config.yaml', 'r') as f:
         conf = yaml.safe_load(f)
     client = Neo4jDataClient(**conf['Neo4j'])
-    data = client.get_sample()
+    # data = client.get_sample()

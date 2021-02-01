@@ -1,22 +1,25 @@
 version: '3'
 services:
-  # python:
-  #   build: .
-  #   restart: always
-  #   tty: true
-  #   volumes:
-  #     - ./ev_route:/usr/src/app
-  neo4j:
-    image: neo4j
-    ports:
-      - 7474:7474
-      - 7687:7687
+  python:
+    build: charger_server/.
     restart: always
+    tty: true
     volumes:
-      - ./neo4j/data:/data
-      - ./neo4j/logs:/logs
-      - ./neo4j/conf:/conf
-      - ./neo4j/import:/import
-    environment:
-      - NEO4J_AUTH=neo4j/password
+      - ./charger_server/src:/usr/src
+    ports:
+      - 5500:5000
+  
+  # neo4j:
+  #   image: neo4j
+  #   ports:
+  #     - 7474:7474
+  #     - 7687:7687
+  #   restart: always
+  #   volumes:
+  #     - ./neo4j/data:/data
+  #     - ./neo4j/logs:/logs
+  #     - ./neo4j/conf:/conf
+  #     - ./neo4j/import:/import
+  #   environment:
+  #     - NEO4J_AUTH=neo4j/password
 
