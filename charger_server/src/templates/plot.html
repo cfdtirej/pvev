@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+</head>
+<body>
+    <h1>Chart</h1>
+    <div>
+        <div>
+
+        </div>
+        <canvas id="ppv-0" width="200" height="100"></canvas>
+        <canvas id="ppv-1" width="200" height="100"></canvas>
+        <canvas id="ppv-2" width="200" height="100"></canvas>
+        <canvas id="ppv-3" width="200" height="100"></canvas>
+    </div>
+    
+    <div>
+        <canvas id="pd-0" width="200" height="100"></canvas>
+        <canvas id="pd-1" width="200" height="100"></canvas>
+        <canvas id="pd-2" width="200" height="100"></canvas>
+        <canvas id="pd-3" width="200" height="100"></canvas>
+    </div>
+    <canvas id="ppv-pd" width="200" height="100"></canvas>
+    
+    
+    <script>
+        const URL = 'http://localhost:5500/plot/'
+        
+        const linePlot = async (id, URL, arrayIdx, category) => {
+            try {
+                const options = {method: 'GET'}
+                const tmpData = {}
+                const res = await fetch(URL, options);
+                const resData = await res.json()
+                    .then((res) => {
+                        new Chart(document.getElementById(id), {
+                                type: 'line',
+                                data:{
+                                    labels: res.data[arrayIdx].time,
+                                    datasets: [{
+                                        label: `${category}: ${res.data[arrayIdx].meshcode}`,
+                                        data: res.data[arrayIdx][category],
+                                        borderColor: [
+                                            'rgba(255, 99, 132, 1)',
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero: true
+                                            }
+                                        }]
+                                    },
+                                    legend: {
+                                        position: 'left'
+                                    }
+                                }
+                            })
+                        })                        
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        const multiLinePlot = async (id, URL) => {
+            try {
+                const options = {method: 'GET'}
+                const tmpData = {}
+                const res = await fetch(URL, options);
+                const resData = await res.json()
+                    .then((res) => {
+                        new Chart(document.getElementById(id), {
+                                type: 'line',
+                                data:{
+                                    labels: res.data[0].time,
+                                    datasets: [
+                                        {
+                                            label: `ppv-pd: ${res.data[0].meshcode}`,
+                                            data: res.data[0]['ppv-pd'],
+                                            borderColor: ['rgba(255, 99, 132, 1)'],
+                                            borderWidth: 1
+                                        },
+                                        {
+                                            label: `ppv-pd: ${res.data[1].meshcode}`,
+                                            data: res.data[1]['ppv-pd'],
+                                            borderColor: ['rgba(255, 99, 132, 1)'],
+                                            borderWidth: 1
+                                        },
+                                        {
+                                            label: `ppv-pd: ${res.data[2].meshcode}`,
+                                            data: res.data[2]['ppv-pd'],
+                                            borderColor: ['rgba(255, 99, 132, 1)'],
+                                            borderWidth: 1
+                                        },
+                                        {
+                                            label: `ppv-pd: ${res.data[3].meshcode}`,
+                                            data: res.data[3]['ppv-pd'],
+                                            borderColor: ['rgba(255, 99, 132, 1)'],
+                                            borderWidth: 1
+                                        },
+
+                                    ]
+                                },
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero: true
+                                            }
+                                        }]
+                                    },
+                                    legend: {
+                                        position: 'left'
+                                    }
+                                }
+                            })
+                        })                        
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        setInterval(()=>{
+            linePlot ('ppv-0',URL, 0, 'ppv')
+            linePlot ('ppv-1',URL, 1, 'ppv')
+            linePlot ('ppv-2',URL, 2, 'ppv')
+            linePlot ('ppv-3',URL, 3, 'ppv')
+            linePlot ('pd-0',URL, 0, 'pd')
+            linePlot ('pd-1',URL, 1, 'pd')
+            linePlot ('pd-2',URL, 2, 'pd')
+            linePlot ('pd-3',URL, 3, 'pd')
+            multiLinePlot('ppv-pd', URL)
+            location.reload
+        }, 5000)
+        // fetchData('myChart2',URL)
+        
+        // setInterval(async ()=> location.reload, 2000)
+        
+        // fetchData('myChart2',URL)
+        // const data = fetchData(URL);
+        // console.log(data)
+        // let ctx1 = document.getElementById('myChart1');
+        // let myChart1 = new Chart(ctx1, data)
+        
+    </script>
+</body>
+</html>

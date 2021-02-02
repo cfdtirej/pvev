@@ -136,7 +136,7 @@ class CreateDataFields:
             for param in params.values():
                 graphdb.update_charger_graph(param)
             self.idx_count_up()
-            time.sleep(1)
+            time.sleep(5)
 
 
 if __name__ == '__main__':
