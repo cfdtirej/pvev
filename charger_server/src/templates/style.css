@@ -1,13 +1,51 @@
-.chart {
-  display: none;
-  width: 700px;
-  height: 700px;
+#chart-ppv{
+  /* display: grid; */
+  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+  flex-direction: row;
 }
-.chart1 {
-  display: none;
+.chart-ppv-0{
   width: 50%;
+  /* object-fit: contain; */
+  float: left;
 }
-.chart2 {
-  display: none;
+.chart-ppv-1{
   width: 50%;
+  /* object-fit: contain; */
+  float: left;
+}
+.chart-ppv-2{
+  width: 50%;
+  /* object-fit: contain; */
+  float: left;
+}
+.chart-ppv-3{
+  width: 50%;
+  /* object-fit: contain; */
+  float: left;
+}
+
+#chart-pd{
+  /* display: grid; */
+  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+  flex-direction: row;
+}
+.chart-pd-0{
+  width: 50%;
+  /* object-fit: contain; */
+  float: left;
+}
+.chart-pd-1{
+  width: 50%;
+  /* object-fit: contain; */
+  float: left;
+}
+.chart-pd-2{
+  width: 50%;
+  /* object-fit: contain; */
+  float: left;
+}
+.chart-pd-3{
+  width: 50%;
+  /* object-fit: contain; */
+  float: left;
 }

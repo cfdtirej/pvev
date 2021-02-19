@@ -4,28 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 </head>
 <body>
-    <h1>Chart</h1>
-    <!-- <div>
-        <div>
+    <h1>Chart</h1><br>
 
-        </div>
-        <canvas id="ppv-0" width="200" height="100"></canvas>
-        <canvas id="ppv-1" width="200" height="100"></canvas>
-        <canvas id="ppv-2" width="200" height="100"></canvas>
-        <canvas id="ppv-3" width="200" height="100"></canvas>
-    </div>
-    
-    <div>
-        <canvas id="pd-0" width="200" height="100"></canvas>
-        <canvas id="pd-1" width="200" height="100"></canvas>
-        <canvas id="pd-2" width="200" height="100"></canvas>
-        <canvas id="pd-3" width="200" height="100"></canvas>
-    </div> -->
+    <h1>PD</h1>
+    <div id="chart-pd">
+        <div class="chart-pd-0"><canvas id="pd-0" width="200" height="100"></canvas></div>
+        <div class="chart-pd-1"><canvas id="pd-1" width="200" height="100"></canvas></div>
+        <div class="chart-pd-2"><canvas id="pd-2" width="200" height="100"></canvas></div>
+        <div class="chart-pd-3"><canvas id="pd-3" width="200" height="100"></canvas></div>
+        <br>
+    </div><br>
+
+    <h1>PPV</h1>
+    <div id="chart-ppv">
+        <div class="chart-ppv-0"><canvas id="ppv-0" width="200" height="100"></canvas></div>
+        <div class="chart-ppv-1"><canvas id="ppv-1" width="200" height="100"></canvas></div>
+        <div class="chart-ppv-2"><canvas id="ppv-2" width="200" height="100"></canvas></div>
+        <div class="chart-ppv-2"><canvas id="ppv-3" width="200" height="100"></canvas></div>
+        <br>
+    </div><br>
+
+    <h1>PD ALL</h1>
     <canvas id="pd" width="200" height="100"></canvas><br>
+    <h1>PPV ALL</h1>
     <canvas id="ppv" width="200" height="100"></canvas><br>
+    <h1>PPV-PD</h1>
     <canvas id="ppv-pd" width="200" height="100"></canvas><br>
     
     
@@ -53,6 +60,7 @@
                                     }]
                                 },
                                 options: {
+                                    animation: false,
                                     scales: {
                                         yAxes: [{
                                             ticks: {
@@ -61,7 +69,10 @@
                                         }]
                                     },
                                     legend: {
-                                        position: 'left'
+                                        position: 'left',
+                                        labels: {
+                                            fontSize: 12
+                                        }
                                     }
                                 }
                             })
@@ -121,7 +132,7 @@
                                     legend: {
                                         position: 'left',
                                         labels: {
-                                            fontSize: 28
+                                            fontSize: 12
                                         }
                                     }
                                 }
@@ -132,19 +143,19 @@
             }
         }
         setInterval(()=>{
-            // linePlot ('ppv-0',URL, 0, 'ppv')
-            // linePlot ('ppv-1',URL, 1, 'ppv')
-            // linePlot ('ppv-2',URL, 2, 'ppv')
-            // linePlot ('ppv-3',URL, 3, 'ppv')
-            // linePlot ('pd-0',URL, 0, 'pd')
-            // linePlot ('pd-1',URL, 1, 'pd')
-            // linePlot ('pd-2',URL, 2, 'pd')
-            // linePlot ('pd-3',URL, 3, 'pd')
+            linePlot ('ppv-0',URL, 0, 'ppv')
+            linePlot ('ppv-1',URL, 1, 'ppv')
+            linePlot ('ppv-2',URL, 2, 'ppv')
+            linePlot ('ppv-3',URL, 3, 'ppv')
+            linePlot ('pd-0',URL, 0, 'pd')
+            linePlot ('pd-1',URL, 1, 'pd')
+            linePlot ('pd-2',URL, 2, 'pd')
+            linePlot ('pd-3',URL, 3, 'pd')
             multiLinePlot('pd', URL, 'pd')
             multiLinePlot('ppv', URL, 'ppv')
             multiLinePlot('ppv-pd', URL, 'ppv-pd')
             location.reload
-        }, 500)
+        }, 1000)
         // fetchData('myChart2',URL)
         
         // setInterval(async ()=> location.reload, 2000)

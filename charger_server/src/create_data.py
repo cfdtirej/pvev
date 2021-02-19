@@ -125,7 +125,7 @@ class CreateDataFields:
         return parameters
 
     # EVの充電量を無視して1秒おきにChargerのデータを更新する
-    def create_charger_file_data_only(self):
+    def create_charger_file_data_only(self, sec=1):
         yaml_conf_path = os.path.join(
             os.path.dirname(__file__), 'config/config.yaml')
         with open(yaml_conf_path, 'r') as yml:
@@ -136,7 +136,7 @@ class CreateDataFields:
             for param in params.values():
                 graphdb.update_charger_graph(param)
             self.idx_count_up()
-            time.sleep(0.5)
+            time.sleep(sec)
 
 
 if __name__ == '__main__':
